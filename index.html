@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="includes/WhatsApp Image 2024-09-13 at 16.44.17.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script&display=swap" rel="stylesheet"> 
+    <title>FelipeTeAma</title>
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="Orochi _AMOR DE FIM DE NOITE_  (Prod. Papatinho).mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    <div class="overlay"></div>
+    <div class="container">
+        <header>
+            <h1>Feliz 1 Ano de Namoro Emilie, Meu Amor da Minha Vida!</h1>
+            <p>Um ano meu amor, um ano de muito amor, risadas e memórias inesquecíveis. Eu te amo para sempre e para todo sempre, Emilie Fessel Silva, meu amor da minha vida!</p>
+        </header>
+        <section class="gallery">
+            <h2>Nossas Memórias</h2>
+            <div class="photos">
+                <img src="includes/WhatsApp Image 2024-09-02 at 21.03.56.jpeg" alt="Amo muito" data-message="Meu amor, hoje celebramos um ano de magia, risos, carinho, e muito amor. Desde o primeiro dia, você trouxe luz para a minha vida, e cada momento ao seu lado tem sido maravilhoso. Obrigado por ser a razão do meu sorriso de todos os dias e por tornar cada dia mais especial. Não há palavras suficientes para expressar o quanto você significa para mim. Que venham muitos mais anos de amor e felicidade! Feliz aniversário para nós, meu amor da minha vida eterna">
+                <img src="includes/WhatsApp Image 2024-09-02 at 21.03.57 (1).jpeg" alt="Amo demais" data-message="Meu amor, há exatamente 1 ano, quando você aceitou o meu pedido, nossas vidas se cruzaram e se transformaram para sempre. Esse tempo ao seu lado tem sido um presente maravilhoso, e cada dia é um capítulo incrível da nossa história juntos. Seu amor, seu carinho, a sua ternura são o que eu mais valorizo e agradeço a cada dia por ter você ao meu lado. Hoje, celebramos não apenas um ano de namoro, mas um ano de construção de um futuro cheio de sonhos e amor. Eu te amo mais do que palavras podem dizer. Vamos continuar escrevendo essa linda história juntos meu amor!">
+                <img src="includes/WhatsApp Image 2024-09-02 at 21.03.57.jpeg" alt="Amo mais que tudo" data-message="Um ano atrás, meu mundo ganhou um novo significado quando você entrou na minha vida. Cada momento com você é uma nova descoberta, um novo motivo para sorrir, mais um motivo pra eu te amar, e acreditar no poder do amor verdadeiro. Seu carinho e apoio têm sido meu maior presente, e a nossa jornada juntos tem sido simplesmente mágica. Feliz aniversário de 1 ano para nós meu amor! Que possamos continuar a crescer, amar e criar memórias inesquecíveis. Com todo o meu amor, sempre">
+            </div>
+        </section>
+        <footer>
+            <p>Com todo o meu amor, Felipe Rocha Faria (O Seu Amor da Sua Vida)</p>
+        </footer>
+    </div>
+
+    <!-- Adicionando uma animação de cor no fundo -->
+    <div class="animated-background"></div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <div class="lightbox-content">
+            <p id="lightbox-text"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-music');
+            audio.volume = 0.5; // Define o volume para 50%
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // O áudio foi iniciado com sucesso
+                }).catch(error => {
+                    // Se o navegador bloquear o autoplay, mostramos um botão para iniciar manualmente
+                    var btn = document.createElement("button");
+                    btn.innerHTML = "Quer ouvir uma musiquinha meu amor? Clica aqui sua linda!";
+                    btn.className = "music-button";
+                    document.body.appendChild(btn);
+
+                    btn.addEventListener('click', function() {
+                        audio.play();
+                        btn.style.display = "none";
+                    });
+                });
+            }
+
+            // Lightbox
+            var lightbox = document.getElementById('lightbox');
+            var lightboxText = document.getElementById('lightbox-text');
+            var closeBtn = document.querySelector('.lightbox .close');
+
+            document.querySelectorAll('.photos img').forEach(function(img) {
+                img.addEventListener('click', function() {
+                    var message = img.getAttribute('data-message');
+                    lightboxText.textContent = message;
+                    lightbox.style.display = 'flex';
+                });
+            });
+
+            closeBtn.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+            });
+
+            // Fechar lightbox ao clicar fora do conteúdo
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
